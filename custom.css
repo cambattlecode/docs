@@ -8,8 +8,24 @@ nav img[src*="logo"] {
 
 /* Constrain images inside tables to icon size */
 table td img {
-  max-width: 48px;
-  max-height: 48px;
-  width: auto;
-  height: auto;
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent paragraph wrappers around images from adding spacing */
+table td p:has(img) {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Keep image columns narrow */
+table td:has(img) {
+  width: 48px;
+  padding: 4px 8px;
 }
