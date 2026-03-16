@@ -48,7 +48,7 @@ $$
 \text{cost} = \lfloor \text{scale} \times \text{base cost} \rfloor
 $$
 
-Where scale starts at 1.0 and increases with each entity built. You can query the current scale with `c.get_scale_percent()` which returns it as a percentage (100.0 at base).
+Where scale starts at 1.0 and increases **additively** with each entity built — two builder bots at +10% each gives 1.2x, not 1.21x. You can query the current scale with `c.get_scale_percent()` which returns it as a percentage (100.0 at base).
 
 import { DenseTable } from "/snippets/dense-table.jsx";
 
