@@ -1,0 +1,7 @@
+/* Increase sidebar logo size */
+[class*="sidebar"] img[alt*="logo" i],
+.mint-logo img,
+nav img[src*="logo"] {
+  max-height: 3rem !important;
+  width: auto !important;
+}
