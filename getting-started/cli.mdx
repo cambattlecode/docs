@@ -65,7 +65,7 @@ cambc run <bot_a> <bot_b> [map]
 | Option | Description |
 |--------|-------------|
 | `--replay PATH` | Output replay file path (overrides `cambc.toml` default) |
-| `--seed N` | Map seed for deterministic generation (overrides `cambc.toml` default) |
+| `--seed N` | Map seed (overrides `cambc.toml` default) |
 | `--watch` | Open the visualiser automatically after the match |
 
 ```bash
@@ -147,7 +147,7 @@ cambc submit my_bot.zip      # pre-zipped
 
 ### `cambc status`
 
-Show your current team, rating, and member list.
+Show your current team, rating, rank, and member list.
 
 ```bash
 cambc status
@@ -182,7 +182,7 @@ Upload two local bots and run a remote match with full time limit enforcement on
 cambc test-run <bot_a> <bot_b> [map]
 ```
 
-Both bots are packaged and uploaded to the server. Unlike `cambc run`, this enforces the 2ms CPU time limit per turn — use this to check your bot's performance before submitting.
+Both bots are packaged and uploaded to the server. Unlike `cambc run`, this enforces the 2ms CPU time limit per round — use this to check your bot's performance before submitting.
 
 ```bash
 cambc test-run my_bot opponent                    # test two bots remotely

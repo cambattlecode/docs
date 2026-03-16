@@ -26,7 +26,7 @@ cambc run my_bot opponent --replay out.replay26  # custom replay path
 cambc watch replay.replay26
 ```
 
-Opens the visualiser in your browser. Supports play/pause, turn scrubbing, speed control, and keyboard navigation.
+Opens the visualiser in your browser. Supports play/pause, round scrubbing, speed control, and keyboard navigation.
 
 ### Run + watch in one command
 
@@ -52,6 +52,8 @@ cambc test-run <bot_a> <bot_b> [map]
 ```
 
 This uploads both bots and runs a match on AWS Graviton3 instances with the 2ms CPU time limit enforced. Use this to catch performance issues before submitting.
+
+Bot paths for `test-run` must be a directory containing `main.py` or a `.zip` file (unlike `cambc run`, arbitrary `.py` files are not accepted).
 
 ```bash
 cambc test-run my_bot opponent

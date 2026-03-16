@@ -19,7 +19,7 @@ cambc run starter starter --watch
 
 ## Bot structure
 
-Every bot is a Python file containing a `Player` class with a `run` method. The engine creates one `Player` instance per unit and calls `run(controller)` once per turn.
+Every bot is a Python file containing a `Player` class with a `run` method. The engine creates one `Player` instance per unit and calls `run(controller)` once per round.
 
 ```python main.py
 from cambc import *
@@ -44,17 +44,19 @@ class Player:
                     return
 
     def run_builder(self, c: Controller):
-        # Try to build a road, then move randomly
+        # Look for titanium ore and build harvesters
         pos = c.get_position()
-        for d in Direction:
-            if d == Direction.CENTRE:
-                continue
-            target = pos.add(d)
-            if c.can_build_road(target):
-                c.build_road(target)
-                return
+        for tile in c.get_nearby_tiles():
+            if c.get_tile_env(tile) == Environment.ORE_TITANIUM:
+                if c.can_build_harvester(tile):
+                    c.build_harvester(tile)
+                    return
 
-        # Move in a random direction
+        # Build a conveyor under ourselves to keep moving
+        if c.can_build_conveyor(pos, Direction.SOUTH):
+            c.build_conveyor(pos, Direction.SOUTH)
+
+        # Move in a random walkable direction
         for d in Direction:
             if d == Direction.CENTRE:
                 continue
@@ -63,11 +65,15 @@ class Player:
                 return
 ```
 
+<Info>
+  This is a simplified example — the actual starter bot from `cambc starter` is more complete, with conveyor chains that deliver resources back to the core.
+</Info>
+
 ## Key concepts
 
 <AccordionGroup>
   <Accordion title="One Player instance per unit">
-    Each unit (core, builder bot, turret) gets its own `Player` instance. Instance variables persist across turns for that unit, but are **not shared** between units. Use [markers](/spec/other-buildings#marker) for inter-unit communication.
+    Each unit (core, builder bot, turret) gets its own `Player` instance. Instance variables persist across rounds for that unit, but are **not shared** between units. Use [markers](/spec/other-buildings#marker) for inter-unit communication.
   </Accordion>
   <Accordion title="The Controller object">
     The `controller` argument passed to `run()` provides all game queries and actions. See the full [Controller API reference](/api/controller).
@@ -76,7 +82,7 @@ class Player:
     `from cambc import *` gives you all game types: `Team`, `EntityType`, `Direction`, `Position`, `ResourceType`, `Environment`, `GameConstants`, `GameError`, and `Controller`.
   </Accordion>
   <Accordion title="Time limit">
-    Each unit gets **2ms of CPU time** per turn, plus a 5% buffer that refills when you use less. Locally there are no time limits — use remote test runs to check performance on the actual hardware.
+    Each unit gets **2ms of CPU time** per round, plus a 5% buffer that refills when you use less. Locally there are no time limits — use remote test runs to check performance on the actual hardware.
   </Accordion>
 </AccordionGroup>
 

@@ -3,7 +3,7 @@ title: Controller
 description: Complete reference for all Controller methods available to your bot.
 ---
 
-The `Controller` object is passed to your `Player.run()` method each turn. It provides all queries and actions for interacting with the game.
+The `Controller` object is passed to your `Player.run()` method each round. It provides all queries and actions for interacting with the game.
 
 ```python
 class Player:
@@ -134,8 +134,8 @@ class Player:
   Return the height of the map in tiles.
 </ResponseField>
 
-<ResponseField name="get_current_turn()" type="int">
-  Return the current turn number (starts at 1).
+<ResponseField name="get_current_round()" type="int">
+  Return the current round number (starts at 1).
 </ResponseField>
 
 <ResponseField name="get_global_resources()" type="tuple[int, int]">
@@ -147,7 +147,7 @@ class Player:
 </ResponseField>
 
 <ResponseField name="get_cpu_time_elapsed()" type="int">
-  Return the CPU time elapsed this turn in microseconds.
+  Return the CPU time elapsed this round in microseconds.
 </ResponseField>
 
 ## Cost getters
@@ -177,7 +177,7 @@ c.get_builder_bot_cost()
 </ResponseField>
 
 <ResponseField name="can_move(direction)" type="bool">
-  Return True if this builder bot can move in direction this turn.
+  Return True if this builder bot can move in direction this round.
 </ResponseField>
 
 ## Building
@@ -195,7 +195,6 @@ c.build_armoured_conveyor(pos, direction) c.can_build_armoured_conveyor(pos, dir
 c.build_gunner(pos, direction)            c.can_build_gunner(pos, direction)
 c.build_sentinel(pos, direction)          c.can_build_sentinel(pos, direction)
 c.build_breach(pos, direction)            c.can_build_breach(pos, direction)
-c.build_launcher(pos, direction)          c.can_build_launcher(pos, direction)
 ```
 
 ### Bridge
@@ -215,6 +214,7 @@ c.build_harvester(pos)                    c.can_build_harvester(pos)
 c.build_road(pos)                         c.can_build_road(pos)
 c.build_barrier(pos)                      c.can_build_barrier(pos)
 c.build_foundry(pos)                      c.can_build_foundry(pos)
+c.build_launcher(pos)                     c.can_build_launcher(pos)
 ```
 
 ## Healing & destruction
@@ -224,7 +224,7 @@ c.build_foundry(pos)                      c.can_build_foundry(pos)
 </ResponseField>
 
 <ResponseField name="can_heal(position)" type="bool">
-  Return True if this builder bot can heal the tile this turn.
+  Return True if this builder bot can heal the tile this round.
 </ResponseField>
 
 <ResponseField name="destroy(building_pos)" type="None">
@@ -242,11 +242,11 @@ c.build_foundry(pos)                      c.can_build_foundry(pos)
 ## Markers
 
 <ResponseField name="place_marker(position, value)" type="None">
-  Place a marker with the given u32 value. Does not cost action cooldown. Max one per turn.
+  Place a marker with the given u32 value. Does not cost action cooldown. Max one per round.
 </ResponseField>
 
 <ResponseField name="can_place_marker(position)" type="bool">
-  Return True if this unit can place a marker at position this turn.
+  Return True if this unit can place a marker at position this round.
 </ResponseField>
 
 <ResponseField name="get_marker_value(id)" type="int">
@@ -260,7 +260,7 @@ c.build_foundry(pos)                      c.can_build_foundry(pos)
 </ResponseField>
 
 <ResponseField name="can_fire(target)" type="bool">
-  Return True if this turret can fire at target this turn.
+  Return True if this turret can fire at target this round.
 </ResponseField>
 
 <ResponseField name="launch(bot_pos, target)" type="None">
@@ -278,7 +278,7 @@ c.build_foundry(pos)                      c.can_build_foundry(pos)
 </ResponseField>
 
 <ResponseField name="can_spawn(position)" type="bool">
-  Return True if the core can spawn a builder at position this turn.
+  Return True if the core can spawn a builder at position this round.
 </ResponseField>
 
 ## Debug indicators

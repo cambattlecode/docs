@@ -3,6 +3,8 @@ title: Builder Bot
 description: The only mobile unit — responsible for constructing all buildings.
 ---
 
+<img src="/images/entities/builder-bot.png" alt="Builder bot" style={{ width: 64, float: "right", marginLeft: 16 }} />
+
 Builder bots are the **only mobile unit**. They construct buildings, heal friendly entities, and can self-destruct for area damage.
 
 ## Properties
@@ -25,7 +27,7 @@ Builder bots can move to an adjacent tile (including diagonals) if their move co
   - Roads (either team)
   - The allied core
 
-  These are called **walkable** tiles.
+  These are called **walkable** tiles. The direction of the conveyor does not matter, and neither does the presence of resources on the tile.
 </Warning>
 
 ```python
@@ -58,7 +60,7 @@ if c.can_heal(target_pos):
 
 ### Destroy
 
-Destroy any allied building within action radius. This can be done **any number of times per turn** and does **not** cost action cooldown.
+Destroy any allied building within action radius. This can be done **any number of times per round** and does **not** cost action cooldown.
 
 ```python
 if c.can_destroy(building_pos):
@@ -75,4 +77,4 @@ c.self_destruct()
 
 ## Markers
 
-Builder bots (like all units) can place one [marker](/spec/other-buildings#marker) per turn within action radius, separate from the action cooldown.
+Builder bots (like all units) can place one [marker](/spec/other-buildings#marker) per round within action radius, separate from the action cooldown.

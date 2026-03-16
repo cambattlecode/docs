@@ -5,6 +5,8 @@ description: Utility buildings — walkable paths, defensive walls, and inter-un
 
 ## Road
 
+<img src="/images/entities/road.png" alt="Road" style={{ width: 64, float: "right", marginLeft: 16 }} />
+
 Walkable tiles for builder bots to move on. The cheapest building.
 
 | Property | Value |
@@ -14,6 +16,8 @@ Walkable tiles for builder bots to move on. The cheapest building.
 | Scaling | 0.5% |
 
 ## Barrier
+
+<img src="/images/entities/barrier.png" alt="Barrier" style={{ width: 64, float: "right", marginLeft: 16 }} />
 
 Cheap, takes up space, and has high HP. Useful for blocking enemy paths or protecting key buildings.
 
@@ -25,7 +29,9 @@ Cheap, takes up space, and has high HP. Useful for blocking enemy paths or prote
 
 ## Marker
 
-A tile containing a single **unsigned 32-bit integer** that can be read by any allied unit. Building a marker is completely free and does **not** cost action cooldown — you may place at most one marker per turn.
+<img src="/images/entities/marker.png" alt="Marker" style={{ width: 64, float: "right", marginLeft: 16 }} />
+
+A tile containing a single **unsigned 32-bit integer** that can be read by any allied unit. Building a marker is completely free and does **not** cost action cooldown — you may place at most one marker per round.
 
 Any team may build over markers, destroying them.
 
@@ -37,6 +43,10 @@ Any team may build over markers, destroying them.
 <Info>
   Markers are the **only form of communication** between allied units. Global variables are not shared between `Player` instances — each unit has its own isolated Python environment.
 </Info>
+
+<Tip>
+  All units (core, builder bots, and turrets) can place markers — not just builder bots.
+</Tip>
 
 ```python
 # Write a value to a marker
