@@ -51,3 +51,8 @@ nav img[src*="logo"] {
 .dense-table {
   overflow-x: auto;
 }
+
+/* Cap content images to a reasonable size */
+article img:not([src*="logo"]):not([src*="entities/"]):not([src*="resources/"]) {
+  max-width: 400px;
+}
