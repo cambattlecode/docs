@@ -50,23 +50,17 @@ The map is guaranteed to be **symmetric** by either reflection or rotation.
 
 Each grid cell is one of:
 
-<CardGroup cols={4}>
-  <Card title="Empty">
-    Can build anything
-  </Card>
-  <Card title="Wall">
-    <img src="/images/resources/wall.jpg" alt="Wall" style={{ width: 32, marginBottom: 8 }} />
-    Impassable, cannot build
-  </Card>
-  <Card title="Titanium ore">
-    <img src="/images/resources/titanium-ore.png" alt="Titanium ore" style={{ width: 32, marginBottom: 8 }} />
-    Harvesters mine titanium
-  </Card>
-  <Card title="Axionite ore">
-    <img src="/images/resources/axionite-ore.png" alt="Axionite ore" style={{ width: 32, marginBottom: 8 }} />
-    Harvesters mine raw axionite
-  </Card>
-</CardGroup>
+<DenseTable>
+<table>
+<thead><tr><th>Cell type</th><th>Tile</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Empty</td><td></td><td>Can build anything</td></tr>
+<tr><td>Wall</td><td><img src="/images/resources/wall.jpg" alt="" /></td><td>Impassable, cannot build</td></tr>
+<tr><td>Titanium ore</td><td><img src="/images/resources/titanium-ore.png" alt="" /></td><td>Harvesters mine titanium</td></tr>
+<tr><td>Axionite ore</td><td><img src="/images/resources/axionite-ore.png" alt="" /></td><td>Harvesters mine raw axionite</td></tr>
+</tbody>
+</table>
+</DenseTable>
 
 Walls prevent building anything on the tile they occupy. Ores are tiles on which harvesters may be built to mine resources.
 
