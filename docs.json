@@ -46,7 +46,6 @@
             "group": "Start Here",
             "pages": [
               "index",
-              "getting-started/competition",
               "getting-started/installation",
               "getting-started/first-bot",
               "getting-started/running-matches",
