@@ -52,7 +52,24 @@ nav img[src*="logo"] {
   overflow-x: auto;
 }
 
-/* Cap content images to a reasonable size */
-article img:not([src*="logo"]):not([src*="entities/"]):not([src*="resources/"]) {
-  max-width: 400px;
+/* Cap range/content images to a reasonable size */
+[data-path*="ranges/"] {
+  max-width: 400px !important;
+}
+
+img[alt*="range"] {
+  max-width: 400px !important;
+}
+
+/* Fallback: cap all content images except small icons */
+#content img {
+  max-width: 400px !important;
+}
+
+#content .dense-table img {
+  max-width: 22px !important;
+}
+
+#content img[style*="float"] {
+  max-width: none !important;
 }
