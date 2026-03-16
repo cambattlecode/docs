@@ -87,14 +87,21 @@ All units have an action radius of √2 (r² = 2), except the core, which has an
 
 Turrets also have an **attack range** which is different from their action radius — see each turret's page for details.
 
-| Unit | Vision r² | Action r² |
-|------|-----------|-----------|
-| Core | 36 | 8 (from centre) |
-| Builder bot | 20 | 2 |
-| Gunner | 13 | 2 |
-| Sentinel | 32 | 2 |
-| Breach | 10 | 2 |
-| Launcher | 26 | 2 |
+import { DenseTable } from "/snippets/dense-table.jsx";
+
+<DenseTable>
+<table>
+<thead><tr><th>Unit</th><th>Vision r²</th><th>Action r²</th></tr></thead>
+<tbody>
+<tr><td>Core</td><td>36</td><td>8 (from centre)</td></tr>
+<tr><td>Builder bot</td><td>20</td><td>2</td></tr>
+<tr><td>Gunner</td><td>13</td><td>2</td></tr>
+<tr><td>Sentinel</td><td>32</td><td>2</td></tr>
+<tr><td>Breach</td><td>10</td><td>2</td></tr>
+<tr><td>Launcher</td><td>26</td><td>2</td></tr>
+</tbody>
+</table>
+</DenseTable>
 
 ### Cooldowns
 

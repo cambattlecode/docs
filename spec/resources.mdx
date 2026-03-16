@@ -50,12 +50,19 @@ $$
 
 Where scale starts at 1.0 and increases with each entity built. You can query the current scale with `c.get_scale_percent()` which returns it as a percentage (100.0 at base).
 
-| Entity | Scale increase |
-|--------|---------------|
-| Road | +0.5% |
-| Conveyor, splitter, armoured conveyor, bridge, barrier | +1% |
-| Builder bot, harvester, gunner, sentinel, breach, launcher | +10% |
-| Axionite foundry | +100% |
+import { DenseTable } from "/snippets/dense-table.jsx";
+
+<DenseTable>
+<table>
+<thead><tr><th>Entity</th><th>Scale increase</th></tr></thead>
+<tbody>
+<tr><td>Road</td><td>+0.5%</td></tr>
+<tr><td>Conveyor, splitter, armoured conveyor, bridge, barrier</td><td>+1%</td></tr>
+<tr><td>Builder bot, harvester, gunner, sentinel, breach, launcher</td><td>+10%</td></tr>
+<tr><td>Axionite foundry</td><td>+100%</td></tr>
+</tbody>
+</table>
+</DenseTable>
 
 When an entity is destroyed, its scaling contribution is removed — costs go back down.
 

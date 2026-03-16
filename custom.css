@@ -6,26 +6,30 @@ nav img[src*="logo"] {
   width: auto !important;
 }
 
-/* Constrain images inside tables to icon size */
-table td img {
-  width: 32px !important;
-  height: 32px !important;
+/* Dense table component */
+.dense-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.dense-table th,
+.dense-table td {
+  padding: 5px 10px !important;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dense-table th {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dense-table td img {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
-  display: inline-block;
   vertical-align: middle;
-  margin: 0;
-  padding: 0;
-}
-
-/* Prevent paragraph wrappers around images from adding spacing */
-table td p:has(img) {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
-
-/* Keep image columns narrow */
-table td:has(img) {
-  width: 48px;
-  padding: 4px 8px;
+  margin-right: 6px;
 }
