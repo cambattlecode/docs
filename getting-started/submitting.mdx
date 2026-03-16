@@ -1,0 +1,45 @@
+---
+title: Submitting
+description: Upload your bot to the platform to compete on the ladder.
+---
+
+## Via CLI
+
+```bash
+cambc submit ./my_bot/
+```
+
+If you pass a directory, the CLI auto-zips it. You can also submit a zip file directly.
+
+## Via the platform
+
+1. Go to [game.battlecode.cam](https://game.battlecode.cam)
+2. Navigate to **Submissions** in the sidebar
+3. Upload your bot zip
+
+## Bot requirements
+
+Your submission must contain a `main.py` file with a `Player` class. The file can be at the root of the zip or inside a single top-level directory.
+
+| Constraint | Limit |
+|-----------|-------|
+| Zip size | 5 MB max |
+| Decompressed size | 50 MB max |
+| File count | 500 files max |
+| Native extensions | **Not allowed** (`.so`, `.pyd`, `.dylib`, `.dll`) |
+| Imports | Must be top-level (file I/O is blocked during `run()`) |
+
+<Warning>
+  All imports must happen at the top of your file, not inside `run()`. The sandbox blocks file reads during gameplay for security.
+</Warning>
+
+## What happens after upload
+
+1. Your zip is validated (structure, size, no native extensions)
+2. Status is set to **ready**
+3. Your latest ready submission becomes your active bot on the ladder
+4. The scheduler creates matches against other teams hourly
+
+## Ladder
+
+The [ladder](https://game.battlecode.cam/ladder) ranks all teams by Glicko-2 rating. Each hour, the scheduler creates ~10 matches per team: half against similarly-rated opponents, half random. Rating updates happen hourly.

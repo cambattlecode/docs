@@ -1,0 +1,55 @@
+---
+title: Resources
+description: Titanium, axionite, and the cost scaling formula.
+---
+
+## Titanium
+
+The primary resource used to construct most buildings. Each team starts with **1000 titanium**.
+
+Titanium is harvested from titanium ore deposits and delivered to the core via conveyors.
+
+## Axionite
+
+Axionite comes in two forms:
+
+<CardGroup cols={2}>
+  <Card title="Raw axionite">
+    Mined from axionite ore deposits. When fed to a turret or core, it **decays into titanium**. Must be refined first for advanced uses.
+  </Card>
+  <Card title="Refined axionite">
+    Produced by [axionite foundries](/spec/harvester-and-foundry#axionite-foundry) from raw axionite + titanium. Used for powerful units and advanced infrastructure.
+  </Card>
+</CardGroup>
+
+<Info>
+  Whenever "axionite" is mentioned in the spec without qualification, it refers to **refined axionite**.
+</Info>
+
+## Resource distribution
+
+Resources are stored and moved in **stacks of 10**. At the end of each round, buildings that output resources send them to adjacent buildings that accept them.
+
+<Warning>
+  Resources can be outputted to buildings belonging to the **opposing team**.
+</Warning>
+
+See individual building pages for details on input/output directions.
+
+## Cost scaling
+
+The cost of every building and unit is:
+
+$$
+\text{cost} = \lfloor (1 + X) \times \text{base cost} \rfloor
+$$
+
+Where:
+
+$$
+X = \frac{\text{conveyors} + \text{splitters} + \text{armoured conveyors} + \text{bridges}}{100} + \frac{\text{roads}}{200} + \frac{\text{barriers}}{100} - \frac{\text{harvesters} + \text{builder bots} + \text{turrets}}{10} - \text{axionite foundries}
+$$
+
+<Tip>
+  Building too much infrastructure without enough harvesters and combat units increases all costs. Be efficient with what you build!
+</Tip>

@@ -1,0 +1,79 @@
+---
+title: Game Overview
+description: Objective, map, and win conditions for Cambridge Battlecode.
+---
+
+## Background
+
+The year is 2076. A crystalline ore called **axionite** — a room-temperature superconductor — has been discovered on Titan, Saturn's largest moon. At least six corporations have deployed autonomous extraction fleets to Titan's surface.
+
+You write the software that controls your fleet: mining ore, refining axionite, and outcompeting the enemy.
+
+## Objective
+
+Collect resources and **destroy the enemy's core**.
+
+To do this, you must find ore deposits, build harvesters, deliver resources back to the core using conveyors, and expand your territory.
+
+## Win conditions
+
+If both cores are still alive after **2000 rounds**, the winner is decided by tiebreakers in order:
+
+<Steps>
+  <Step title="Axionite delivered">
+    Total refined axionite delivered to the core
+  </Step>
+  <Step title="Titanium delivered">
+    Total titanium delivered to the core
+  </Step>
+  <Step title="Harvesters alive">
+    Number of harvesters currently alive
+  </Step>
+  <Step title="Axionite stored">
+    Total axionite currently stored
+  </Step>
+  <Step title="Titanium stored">
+    Total titanium currently stored
+  </Step>
+  <Step title="Coinflip">
+    Random tiebreaker
+  </Step>
+</Steps>
+
+## Map
+
+The map is a rectangular grid between **20×20** and **50×50** inclusive. The top-left (northwest) corner is position `(0, 0)`.
+
+The map is guaranteed to be **symmetric** by either reflection or rotation.
+
+Each grid cell is one of:
+
+| Cell type | Description |
+|-----------|-------------|
+| **Empty** | Can build anything |
+| **Wall** | Impassable, cannot build |
+| **Titanium ore** | Harvesters can mine titanium |
+| **Axionite ore** | Harvesters can mine raw axionite |
+
+## Units vs buildings
+
+- **Units** run your code — each gets an independent `Player` instance. The core, builder bots, and turrets are units.
+- **Buildings** are immovable entities. All entities except builder bots are buildings.
+- The core and turrets are both units **and** buildings.
+- **Harvesters are not units** — they operate automatically.
+
+Each round, units take turns in spawn order. After all units act, [resources are distributed](/spec/conveyors).
+
+## Vision and action
+
+All units have a **vision radius** (sensing range) and an **action radius** (build/interact range).
+
+| Unit | Vision r² | Action r² |
+|------|-----------|-----------|
+| Core | 36 | 8 (from centre) |
+| Builder bot | 20 | 2 |
+| Turrets | Varies | 2 |
+
+## Cooldowns
+
+All units have action and move cooldowns (non-negative integers that decrease by 1 at the end of each round). Actions and movement require the respective cooldown to be 0.

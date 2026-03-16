@@ -1,0 +1,59 @@
+---
+title: Running Matches
+description: Run local matches with the CLI and view replays in the visualiser.
+---
+
+## Run a local match
+
+```bash
+cambc run my_bot.py opponent.py
+```
+
+This runs the full game engine locally with **no time limits** — ideal for rapid iteration. The engine outputs a `replay.replay26` file.
+
+### Options
+
+```bash
+cambc run my_bot.py opponent.py --replay output.replay26  # custom replay path
+cambc run my_bot.py opponent.py --seed 42                 # deterministic map seed
+```
+
+## View a replay
+
+```bash
+cambc watch replay.replay26
+```
+
+Opens the visualiser in your browser. Supports play/pause, turn scrubbing, and keyboard navigation.
+
+### Run + watch in one command
+
+```bash
+cambc run --watch my_bot.py opponent.py
+```
+
+## Remote test runs
+
+Test your bot on the **same hardware** that runs ladder matches, with full time limit enforcement:
+
+```bash
+cambc test my_bot.py
+```
+
+This uploads your bot and runs an unrated match on AWS Graviton3 instances. Results appear on the [platform](https://game.battlecode.cam).
+
+<Warning>
+  Remote test runs are rate-limited: max 10 per 5 minutes, plus a 5-minute cooldown per matchup.
+</Warning>
+
+## Debugging
+
+- **stdout** (`print()`) is captured and saved to the replay — view it per-unit in the visualiser
+- **stderr** prints to your console in real time
+- Use `c.draw_indicator_line()` and `c.draw_indicator_dot()` to draw debug overlays on the map
+
+## Next steps
+
+<Card title="Submit your bot" icon="cloud-arrow-up" href="/getting-started/submitting">
+  Upload your bot to compete on the ladder.
+</Card>

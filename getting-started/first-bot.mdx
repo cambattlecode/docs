@@ -1,0 +1,78 @@
+---
+title: Your First Bot
+description: Write a basic bot that spawns builder bots and starts harvesting resources.
+---
+
+## Bot structure
+
+Every bot is a Python file containing a `Player` class with a `run` method. The engine creates one `Player` instance per unit and calls `run(controller)` once per turn.
+
+```python main.py
+from cambc import *
+
+class Player:
+    def run(self, c: Controller):
+        entity_type = c.get_entity_type()
+
+        if entity_type == EntityType.CORE:
+            self.run_core(c)
+        elif entity_type == EntityType.BUILDER_BOT:
+            self.run_builder(c)
+
+    def run_core(self, c: Controller):
+        # Spawn a builder bot on the core if possible
+        pos = c.get_position()
+        for dx in range(-1, 2):
+            for dy in range(-1, 2):
+                target = Position(pos.x + dx, pos.y + dy)
+                if c.can_spawn(target):
+                    c.spawn_builder(target)
+                    return
+
+    def run_builder(self, c: Controller):
+        # Try to build a road, then move randomly
+        pos = c.get_position()
+        for d in Direction:
+            if d == Direction.CENTRE:
+                continue
+            target = pos.add(d)
+            if c.can_build_road(target):
+                c.build_road(target)
+                return
+
+        # Move in a random direction
+        for d in Direction:
+            if d == Direction.CENTRE:
+                continue
+            if c.can_move(d):
+                c.move(d)
+                return
+```
+
+## Key concepts
+
+<AccordionGroup>
+  <Accordion title="One Player instance per unit">
+    Each unit (core, builder bot, turret) gets its own `Player` instance. Instance variables persist across turns for that unit, but are **not shared** between units. Use [markers](/spec/other-buildings#marker) for inter-unit communication.
+  </Accordion>
+  <Accordion title="The Controller object">
+    The `controller` argument passed to `run()` provides all game queries and actions. See the full [Controller API reference](/api/controller).
+  </Accordion>
+  <Accordion title="Imports from cambc">
+    `from cambc import *` gives you all game types: `Team`, `EntityType`, `Direction`, `Position`, `ResourceType`, `Environment`, `GameConstants`, `GameError`, and `Controller`.
+  </Accordion>
+  <Accordion title="Time limit">
+    Each unit gets **2ms of CPU time** per turn, plus a 5% buffer that refills when you use less. Locally there are no time limits — use remote test runs to check performance on the actual hardware.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Run a local match" icon="play" href="/getting-started/running-matches">
+    Test your bot against itself or an example opponent.
+  </Card>
+  <Card title="Game rules" icon="book" href="/spec/overview">
+    Understand the full game mechanics before optimising.
+  </Card>
+</CardGroup>

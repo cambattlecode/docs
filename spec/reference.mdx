@@ -1,0 +1,56 @@
+---
+title: Reference Tables
+description: Quick-reference stat tables for all entities.
+---
+
+## Entity stats
+
+| Entity | HP | Base cost (Ti, Ax) | Scale % | Notes |
+|--------|----|--------------------|---------|-------|
+| Core | 500 | — | — | 3×3 footprint; spawns builder bots |
+| Builder bot | 30 | 10 Ti | 10% | Mobile; can build, heal, self-destruct |
+| Conveyor | 20 | 3 Ti | 1% | Cardinal direction; 3 inputs, 1 output |
+| Splitter | 20 | 6 Ti | 1% | 1 input (back), 3 rotating outputs |
+| Bridge | 20 | 10 Ti | 1% | Output to fixed tile within distance 3 |
+| Armoured conveyor | 50 | 10 Ti, 5 Ax | 1% | Same as conveyor, higher HP |
+| Harvester | 30 | 80 Ti | 10% | Outputs resource stack every 4 rounds |
+| Axionite foundry | 50 | 120 Ti | 100% | Ti + raw Ax → refined Ax |
+| Road | 10 | 1 Ti | 0.5% | Walkable tile |
+| Barrier | 30 | 3 Ti | 1% | Blocks space |
+| Marker | 1 | Free | — | Not affected by action cooldown |
+| Gunner | 40 | 10 Ti | 10% | Targets closest tile in facing direction |
+| Sentinel | 30 | 15 Ti | 10% | Line AoE ±1; refined Ax adds +3 cooldown stun |
+| Breach | 60 | 30 Ti, 10 Ax | 10% | Refined Ax only; 180° cone; friendly fire |
+| Launcher | 30 | 20 Ti | 10% | Throws adjacent builder bots |
+
+## Unit combat stats
+
+| Unit | Vision r² | Action r² | Attack r² | Damage | Reload | Ammo/shot |
+|------|-----------|-----------|-----------|--------|--------|-----------|
+| Core | 36 | 8 | — | — | — | — |
+| Builder bot | 20 | 2 | — | 20 (self-destruct) | — | — |
+| Gunner | 13 | 2 | 13 | 10 (+10 with Ax) | 1 | 2 |
+| Sentinel | 32 | 2 | 32 | 20 | 4 | 10 |
+| Breach | 10 | 2 | 5 | 40 + 20 splash | 1 | 5 |
+| Launcher | 26 | 2 (pickup) | 26 (throw) | — | 1 | — |
+
+## Game constants
+
+| Constant | Value |
+|----------|-------|
+| Max turns | 2000 |
+| Stack size | 10 |
+| Starting titanium | 1000 |
+| Starting axionite | 0 |
+| Heal amount | 10 HP |
+| Self-destruct damage | 20 |
+
+## Cost scaling formula
+
+$$
+\text{cost} = \lfloor (1 + X) \times \text{base cost} \rfloor
+$$
+
+$$
+X = \frac{\text{conv} + \text{split} + \text{armoured} + \text{bridge}}{100} + \frac{\text{road}}{200} + \frac{\text{barrier}}{100} - \frac{\text{harvester} + \text{bot} + \text{turret}}{10} - \text{foundry}
+$$

@@ -1,68 +1,107 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "maple",
+  "name": "Cambridge Battlecode",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#dc7702",
+    "light": "#f49f1e",
+    "dark": "#b86e02"
+  },
+  "fonts": {
+    "family": "Berkeley Mono",
+    "source": "/fonts/BerkeleyMono-Regular.woff2",
+    "format": "woff2",
+    "heading": {
+      "family": "Berkeley Mono",
+      "weight": 700,
+      "source": "/fonts/BerkeleyMono-Bold.woff2",
+      "format": "woff2"
+    },
+    "body": {
+      "family": "Berkeley Mono",
+      "weight": 400,
+      "source": "/fonts/BerkeleyMono-Regular.woff2",
+      "format": "woff2"
+    }
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#0c0a09"
+    }
+  },
+  "styling": {
+    "codeblocks": "dark"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Start Here",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "getting-started/installation",
+              "getting-started/first-bot",
+              "getting-started/running-matches",
+              "getting-started/submitting"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Game Rules",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
+              "spec/overview",
+              "spec/resources"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Units",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "spec/core",
+              "spec/builder-bot"
+            ]
+          },
+          {
+            "group": "Buildings",
+            "pages": [
+              "spec/conveyors",
+              "spec/harvester-and-foundry",
+              "spec/other-buildings"
+            ]
+          },
+          {
+            "group": "Combat",
+            "pages": [
+              "spec/turrets"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "spec/reference"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API",
+            "pages": [
+              "api/controller",
+              "api/types",
+              "api/constants"
             ]
           }
         ]
@@ -71,14 +110,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Platform",
+          "href": "https://game.battlecode.cam",
+          "icon": "gamepad"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Discord",
+          "href": "https://discord.gg/xHCygPeAq8",
+          "icon": "discord"
         }
       ]
     }
@@ -90,33 +129,20 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Platform",
+        "href": "https://game.battlecode.cam"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Sign Up",
+      "href": "https://game.battlecode.cam/register"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "discord": "https://discord.gg/xHCygPeAq8",
+      "website": "https://battlecode.cam"
     }
   }
 }

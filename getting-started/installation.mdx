@@ -1,0 +1,41 @@
+---
+title: Installation
+description: Install the Cambridge Battlecode CLI and run your first local match.
+---
+
+## Requirements
+
+- **Python 3.10+** (3.12 recommended)
+- **pip** (comes with Python)
+
+## Install
+
+```bash
+pip install cambc
+```
+
+This gives you both the CLI tool and the compiled Rust game engine as a native Python module. No Docker, Rust toolchain, or Node.js required.
+
+<Info>
+  The `cambc` package includes the full game engine compiled for your platform. Supported: macOS (Apple Silicon + Intel), Linux (x86_64 + ARM64), Windows (x86_64).
+</Info>
+
+## Verify
+
+```bash
+cambc --version
+```
+
+## What's included
+
+| Component | Description |
+|-----------|-------------|
+| `cambc` CLI | Run local matches, open the visualiser, submit bots, trigger test runs |
+| `cambc` Python module | Game types (`Team`, `EntityType`, `Direction`, `Position`, etc.) for use in your bot code |
+| `titan_runner` | The compiled Rust game engine (embedded, runs locally with no time limits) |
+
+## Next steps
+
+<Card title="Write your first bot" icon="arrow-right" href="/getting-started/first-bot">
+  Create a simple bot that spawns builders and starts harvesting.
+</Card>
