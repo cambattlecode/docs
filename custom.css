@@ -5,3 +5,11 @@ nav img[src*="logo"] {
   max-height: 3rem !important;
   width: auto !important;
 }
+
+/* Constrain images inside tables to icon size */
+table td img {
+  max-width: 48px;
+  max-height: 48px;
+  width: auto;
+  height: auto;
+}
