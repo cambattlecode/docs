@@ -123,20 +123,14 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Platform",
-        "href": "https://game.battlecode.cam"
-      }
-    ],
     "primary": {
-      "type": "button",
-      "label": "Sign Up",
-      "href": "https://game.battlecode.cam/register"
+      "type": "link",
+      "label": "Platform",
+      "href": "https://game.battlecode.cam"
     }
   },
   "footer": {
