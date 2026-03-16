@@ -3,6 +3,16 @@ title: Submitting
 description: Upload your bot to the platform to compete on the ladder.
 ---
 
+## Log in
+
+Before submitting, authenticate the CLI with your platform account:
+
+```bash
+cambc login
+```
+
+This opens a browser window to complete the OAuth flow. Your session persists until it expires or you run `cambc logout`.
+
 ## Via CLI
 
 ```bash
@@ -38,8 +48,12 @@ Your submission must contain a `main.py` file with a `Player` class. The file ca
 1. Your zip is validated (structure, size, no native extensions)
 2. Status is set to **ready**
 3. Your latest ready submission becomes your active bot on the ladder
-4. The scheduler creates matches against other teams hourly
+4. The scheduler pairs you against other teams every 10 minutes
 
 ## Ladder
 
-The [ladder](https://game.battlecode.cam/ladder) ranks all teams by Glicko-2 rating. Each hour, the scheduler creates ~10 matches per team: half against similarly-rated opponents, half random. Rating updates happen hourly.
+The [ladder](https://game.battlecode.cam/ladder) ranks all teams by Glicko-2 rating. Every 10 minutes, the scheduler creates one match per team, pairing you with a similarly-rated opponent. Ratings update after each scheduler cycle.
+
+<Tip>
+  Use `cambc test-run` to test your bot with full time limits on the same hardware as the ladder before submitting. Use `cambc unrated` to challenge specific teams without affecting your rating.
+</Tip>

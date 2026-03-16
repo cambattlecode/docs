@@ -3,6 +3,20 @@ title: Your First Bot
 description: Write a basic bot that spawns builder bots and starts harvesting resources.
 ---
 
+## Get started with `cambc starter`
+
+If you haven't already, run `cambc starter` to scaffold your project. When prompted, choose to create the starter bot — it gives you a working bot to build on.
+
+```bash
+cambc starter
+```
+
+The starter bot in `bots/starter/main.py` demonstrates core mechanics: the core spawns builders, builders explore laying conveyors, and when they find titanium ore they build harvesters. Run it against itself to see it in action:
+
+```bash
+cambc run starter starter --watch
+```
+
 ## Bot structure
 
 Every bot is a Python file containing a `Player` class with a `run` method. The engine creates one `Player` instance per unit and calls `run(controller)` once per turn.

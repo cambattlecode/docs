@@ -26,6 +26,14 @@ This gives you both the CLI tool and the compiled Rust game engine as a native P
 cambc --version
 ```
 
+## Set up your project
+
+```bash
+cambc starter
+```
+
+This scaffolds a project with a `cambc.toml` config, `bots/` and `maps/` directories, a `.gitignore`, and optionally a starter bot. See the [CLI reference](/getting-started/cli#cambc-starter) for details.
+
 ## What's included
 
 | Component | Description |
@@ -36,6 +44,11 @@ cambc --version
 
 ## Next steps
 
-<Card title="Write your first bot" icon="arrow-right" href="/getting-started/first-bot">
-  Create a simple bot that spawns builders and starts harvesting.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Write your first bot" icon="arrow-right" href="/getting-started/first-bot">
+    Create a simple bot that spawns builders and starts harvesting.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/getting-started/cli">
+    Full reference for all CLI commands.
+  </Card>
+</CardGroup>

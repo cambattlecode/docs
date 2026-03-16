@@ -49,7 +49,8 @@
               "getting-started/installation",
               "getting-started/first-bot",
               "getting-started/running-matches",
-              "getting-started/submitting"
+              "getting-started/submitting",
+              "getting-started/cli"
             ]
           }
         ]

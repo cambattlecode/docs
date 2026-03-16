@@ -38,18 +38,23 @@ See individual building pages for details on input/output directions.
 
 ## Cost scaling
 
-The cost of every building and unit is:
+Every building and unit you construct increases the cost of future builds. The cost of every building and unit is:
 
 $$
-\text{cost} = \lfloor (1 + X) \times \text{base cost} \rfloor
+\text{cost} = \lfloor \text{scale} \times \text{base cost} \rfloor
 $$
 
-Where:
+Where scale starts at 1.0 and increases with each entity built:
 
-$$
-X = \frac{\text{conveyors} + \text{splitters} + \text{armoured conveyors} + \text{bridges}}{100} + \frac{\text{roads}}{200} + \frac{\text{barriers}}{100} - \frac{\text{harvesters} + \text{builder bots} + \text{turrets}}{10} - \text{axionite foundries}
-$$
+| Entity | Scale increase |
+|--------|---------------|
+| Road | +0.5% |
+| Conveyor, splitter, armoured conveyor, bridge, barrier | +1% |
+| Builder bot, harvester, gunner, sentinel, breach, launcher | +10% |
+| Axionite foundry | +100% |
+
+When an entity is destroyed, its contribution is removed from the scale.
 
 <Tip>
-  Building too much infrastructure without enough harvesters and combat units increases all costs. Be efficient with what you build!
+  Every entity you build makes the next one more expensive. Be efficient with what you build!
 </Tip>

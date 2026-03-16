@@ -6,16 +6,18 @@ description: Run local matches with the CLI and view replays in the visualiser.
 ## Run a local match
 
 ```bash
-cambc run my_bot.py opponent.py
+cambc run <bot_a> <bot_b> [map]
 ```
 
 This runs the full game engine locally with **no time limits** — ideal for rapid iteration. The engine outputs a `replay.replay26` file.
 
-### Options
+Bot paths can be a directory containing `main.py`, a `.py` file, or a bot name from your `bots_dir` (set in `cambc.toml`). The optional map argument is a `.map26` file — if omitted, the first map in your `maps_dir` is used.
 
 ```bash
-cambc run my_bot.py opponent.py --replay output.replay26  # custom replay path
-cambc run my_bot.py opponent.py --seed 42                 # deterministic map seed
+cambc run starter starter                        # bot vs itself
+cambc run my_bot opponent --seed 42              # deterministic seed
+cambc run my_bot opponent maps/custom.map26      # custom map
+cambc run my_bot opponent --replay out.replay26  # custom replay path
 ```
 
 ## View a replay
@@ -24,27 +26,47 @@ cambc run my_bot.py opponent.py --seed 42                 # deterministic map se
 cambc watch replay.replay26
 ```
 
-Opens the visualiser in your browser. Supports play/pause, turn scrubbing, and keyboard navigation.
+Opens the visualiser in your browser. Supports play/pause, turn scrubbing, speed control, and keyboard navigation.
 
 ### Run + watch in one command
 
 ```bash
-cambc run --watch my_bot.py opponent.py
+cambc run --watch starter starter
+```
+
+### View a platform match
+
+```bash
+cambc watch --match <match_id>
+cambc watch --match <match_id> --game 3
 ```
 
 ## Remote test runs
 
-Test your bot on the **same hardware** that runs ladder matches, with full time limit enforcement:
+Remote commands require authentication — run `cambc login` first if you haven't already.
+
+Test your bots on the **same hardware** that runs ladder matches, with full time limit enforcement:
 
 ```bash
-cambc test my_bot.py
+cambc test-run <bot_a> <bot_b> [map]
 ```
 
-This uploads your bot and runs an unrated match on AWS Graviton3 instances. Results appear on the [platform](https://game.battlecode.cam).
+This uploads both bots and runs a match on AWS Graviton3 instances with the 2ms CPU time limit enforced. Use this to catch performance issues before submitting.
+
+```bash
+cambc test-run my_bot opponent
+cambc test-run my_bot opponent maps/custom.map26
+```
 
 <Warning>
-  Remote test runs are rate-limited: max 10 per 5 minutes, plus a 5-minute cooldown per matchup.
+  Remote test runs are rate-limited: max 10 test/unrated matches per 5 minutes, plus a 5-minute cooldown per matchup.
 </Warning>
+
+You can also challenge another team to an unrated match using both teams' latest submissions:
+
+```bash
+cambc unrated <opponent_team_id>
+```
 
 ## Debugging
 
@@ -54,6 +76,11 @@ This uploads your bot and runs an unrated match on AWS Graviton3 instances. Resu
 
 ## Next steps
 
-<Card title="Submit your bot" icon="cloud-arrow-up" href="/getting-started/submitting">
-  Upload your bot to compete on the ladder.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Submit your bot" icon="cloud-arrow-up" href="/getting-started/submitting">
+    Upload your bot to compete on the ladder.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/getting-started/cli">
+    Full reference for all CLI commands.
+  </Card>
+</CardGroup>
