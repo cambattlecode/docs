@@ -127,11 +127,12 @@
     "dark": "/logo/dark.png"
   },
   "navbar": {
-    "primary": {
-      "type": "link",
-      "label": "Platform",
-      "href": "https://game.battlecode.cam"
-    }
+    "links": [
+      {
+        "label": "Platform",
+        "href": "https://game.battlecode.cam"
+      }
+    ]
   },
   "footer": {
     "socials": {
