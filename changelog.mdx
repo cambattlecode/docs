@@ -1,0 +1,44 @@
+---
+title: Changelog
+description: What's new in Cambridge Battlecode.
+---
+
+<Update label="2026-03-17" description="Launch week" tags={["Feature", "Update", "Fix"]}>
+  ## Launch week
+
+  Cambridge Battlecode is live! Here's everything that shipped this week.
+
+  ### New features
+
+  - **Map editor** — Create custom `.map26` maps in the browser with symmetry modes (rotational, horizontal, vertical), brush tools, undo (`Ctrl+Z`), and protobuf import/export. Map sizes are restricted to 20–50 tiles. Open it with [`cambc map-editor`](/getting-started/cli#cambc-map-editor) or on the [platform](https://game.battlecode.cam).
+  - **Visualiser overhaul** — A completely rebuilt match visualiser with tile hover/select inspection, vision and attack range outlines on hover, indicator lines and dots, bot-step mode for stepping through individual unit turns, time-series resource graphs, and playback speed controls up to 64x.
+  - **Marker inspector** — The visualiser sidebar now shows marker values in decimal, hex, and binary, making it easier to debug bot communication.
+  - **`cambc watch` with bundled visualiser** — Running [`cambc watch`](/getting-started/cli#cambc-watch) on a local replay now starts a local server with the full visualiser built in. No internet or authentication required.
+  - **WASD panning and Q/E zoom** — Navigate the visualiser with keyboard controls.
+  - **Unrated matches** — Challenge any team to a match that doesn't affect ratings. Run [`cambc unrated`](/getting-started/cli#cambc-unrated) from the CLI. Unrated matches are prioritised over ladder matches for faster results.
+  - **Head-to-head match filtering** — On the matches page, select two teams to filter for their direct matchups. Win/loss rows are now colour-coded for your team.
+  - **Featured games** — The home page now highlights matches from top-ranked teams instead of closest-rated matches.
+  - **Top teams chart** — A multi-line rating chart on the home page shows the top 10 teams over time, with your team highlighted.
+
+  ### Updates
+
+  - **CLI v1.0.5** — Multiple CLI releases this week with improved Windows support, updated starter bot, and bundled maps. Install the latest with `pip install --upgrade cambc`.
+  - **Game balance** — Road cost scaling corrected to 0.5% (was incorrectly listed as 1%), barrier scaling contribution added, and resource distribution algorithm overhauled.
+  - **Matches are 5 games** — Each match plays exactly 5 games, not best-of-5.
+  - **2ms CPU time limit** — The per-round time limit is set at 2ms on AWS Graviton3 hardware. Use [`cambc test-run`](/getting-started/cli#cambc-test-run) to benchmark your bot remotely.
+  - **1 GB memory limit** — Each bot is limited to 1 GB of memory per match.
+  - **Python 3.12 and 3.13 only** — Bots must target Python 3.12 or 3.13. Python 3.14 is not supported.
+  - **Student status fix** — Your student/non-student status now displays correctly in settings and is editable.
+  - **Matches page performance** — Active matches are capped at 50 rows with a count of additional queued matches, reducing page load times during peak scheduling.
+
+  ### Bug fixes
+
+  - Fixed Windows encoding issues with `cambc.toml` — files written with non-UTF-8 encoding are now auto-repaired on read.
+  - Fixed maps not being bundled in the Windows CLI wheel.
+  - Fixed a crash on Python 3.12 related to sub-interpreter shutdown.
+  - Fixed time limit enforcement reliability for bot execution.
+  - Fixed foundry resource distribution bug.
+  - Fixed markers being placeable on walls — they no longer are.
+  - Fixed map editor allowing overlapping core placement areas.
+  - Fixed visualiser texture loading when running `cambc watch` locally.
+</Update>
