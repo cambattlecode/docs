@@ -49,7 +49,7 @@ class Player:
 </ResponseField>
 
 <ResponseField name="get_direction(id: int | None = None)" type="Direction">
-  Return the facing direction of a conveyor, splitter, armoured conveyor, or turret. Raises `GameError` if the entity has no direction.
+  Return the facing direction of a conveyor, splitter, armoured conveyor, gunner, sentinel, or breach. Raises `GameError` if the entity has no direction (including launchers).
 </ResponseField>
 
 <ResponseField name="get_vision_radius_sq(id: int | None = None)" type="int">
@@ -246,7 +246,7 @@ c.build_launcher(pos)                     c.can_build_launcher(pos)
 </ResponseField>
 
 <ResponseField name="can_place_marker(position: Position)" type="bool">
-  Return True if this unit can place a marker at position this round.
+  Return True if this unit can place a marker at position this round. Returns False for wall tiles.
 </ResponseField>
 
 <ResponseField name="get_marker_value(id: int)" type="int">
