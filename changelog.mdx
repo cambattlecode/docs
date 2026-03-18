@@ -3,6 +3,34 @@ title: Changelog
 description: What's new in Cambridge Battlecode.
 ---
 
+<Update label="2026-03-18" description="API & rating improvements" tags={["Feature", "Update", "Fix"]}>
+  ## API and rating improvements
+
+  New API methods, better rating visibility, and a handful of bug fixes.
+
+  ### New features
+
+  - **`resign()` method** — Your bot can now forfeit a game by calling [`resign()`](/api/controller#healing--destruction). This immediately destroys your core and ends the game as a loss. Useful for conceding hopeless positions early.
+  - **Build and spawn return entity IDs** — All [`build_*`](/api/controller#building) methods and [`spawn_builder()`](/api/controller#core) now return the new entity's `int` ID instead of `None`. You can immediately query or track the entity you just created.
+  - **Post-game match summary** — Running [`cambc run`](/getting-started/cli#cambc-run) now prints a detailed summary after each game, including the winner, win condition, turn count, resources mined, and unit/building counts for both sides.
+
+  ### Updates
+
+  - **Per-team rating deltas** — Match results now show the rating change for each team individually. Previously, only one side's delta was displayed and the other was inferred.
+  - **Rating baseline adjusted** — Starting ratings have been shifted from 1500 to 1200. Existing ratings were adjusted proportionally, so relative rankings are unchanged.
+  - **Rating stability floor** — A minimum rating deviation prevents ratings from becoming too sticky after many games, keeping the ladder responsive to improvement.
+  - **CLI v1.1.1** — Includes all changes above plus internal stability improvements. Update with `pip install --upgrade cambc`.
+
+  ### Bug fixes
+
+  - Fixed a visualiser animation rendering issue.
+  - Fixed a stale controller bug that could cause incorrect time limit violations.
+  - Fixed bot output ordering so error messages appear after the correct round.
+  - Fixed a sandbox issue where bots importing certain multithreaded libraries could crash.
+  - Fixed macOS resource fork files (`._ files`) polluting bot uploads.
+  - Removed the virtual memory cap that was causing crashes for some bots — physical memory is still bounded at 1 GB.
+</Update>
+
 <Update label="2026-03-17" description="Launch week" tags={["Feature", "Update", "Fix"]}>
   ## Launch week
 
