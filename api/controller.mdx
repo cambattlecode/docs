@@ -236,11 +236,11 @@ c.build_launcher(pos)                     c.can_build_launcher(pos)
 </ResponseField>
 
 <ResponseField name="self_destruct()" type="None">
-  Destroy this unit. Builder bots deal 20 damage to their tile.
+  Destroy this unit. Builder bots deal 20 damage to their tile. **Terminates this unit's execution immediately** — no code after `self_destruct()` will run.
 </ResponseField>
 
 <ResponseField name="resign()" type="None">
-  Forfeit the game immediately. Destroys this team's core, ending the game as a loss.
+  Forfeit the game immediately. Destroys this team's core, ending the game as a loss. **Terminates this unit's execution immediately** — no code after `resign()` will run.
 </ResponseField>
 
 ## Markers
