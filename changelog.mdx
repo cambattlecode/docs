@@ -3,6 +3,28 @@ title: Changelog
 description: What's new in Cambridge Battlecode.
 ---
 
+<Update label="2026-03-19" description="Theme toggle & sandbox hardening" tags={["Feature", "Update", "Fix"]}>
+  ## Theme toggle and sandbox hardening
+
+  A new light/dark theme option, tighter bot sandboxing, and several visualiser fixes.
+
+  ### New features
+
+  - **Light/dark theme toggle** — You can now switch between light and dark mode from the sidebar or [Settings](https://game.battlecode.cam) page. Your preference is saved across sessions.
+
+  ### Updates
+
+  - **Stronger bot sandbox** — The match execution environment is now more secure. Bots can no longer spawn threads, execute shell commands, or access process memory. These changes don't affect normal bot code — only adversarial exploits are blocked.
+  - **Bot source encryption** — Bot source files are encrypted on disk during remote matches, adding an extra layer of protection for your code.
+
+  ### Bug fixes
+
+  - Fixed cooldown counters in the [visualiser](/getting-started/cli#cambc-watch) not ticking down between rounds.
+  - Fixed game result indicators in the match sidebar sometimes showing the wrong winner.
+  - Fixed a bug where launchers couldn't fire under certain conditions.
+  - Fixed watchdog timer reliability for time limit enforcement.
+</Update>
+
 <Update label="2026-03-18" description="API & rating improvements" tags={["Feature", "Update", "Fix"]}>
   ## API and rating improvements
 
