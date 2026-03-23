@@ -3,6 +3,46 @@ title: Changelog
 description: What's new in Cambridge Battlecode.
 ---
 
+<Update label="2026-03-23" description="First balance patch" tags={["Update", "Balance", "Clarification"]}>
+  ## First balance patch (23 March 2026, 12pm GMT)
+
+  Meridian Industries has approved a fleet-wide doctrine update for Titan operations. Ongoing market fluctuations in titanium and Axionite, tighter safety regulations on builder chassis, and growing command-network strain across active combat zones have forced changes to logistics, repair, and weapons protocols.
+
+  ### Balance changes
+
+  - **Bridges** — Now add +5% scaling (up from +1%) and cost 20 Ti (up from 10 Ti).
+  - **Builder self-destruct removed** — Builder bots no longer deal damage when they self-destruct.
+  - **Builder attack** — Builder bots can now spend 2 Ti to deal 2 damage on the tile they are standing on.
+  - **Builder healing reduced** — Healing is now 1 Ti for 4 HP (down from free 10 HP).
+  - **Higher unit scaling** — Sentinels and builder bots now add +20% scaling (up from +10%).
+  - **Builder bot cost** — Base cost increased to 50 Ti (up from 10 Ti).
+  - **Global unit cap** — Each team can have at most 50 living units.
+  - **Raw axionite delivery** — Raw axionite is now destroyed when fed to the core or turrets.
+  - **Sentinel rebalance** — Reload reduced to 2 rounds, damage reduced to 10, and ammo per shot reduced to 5.
+  - **Breach vision** — Vision radius² increased to 13 (up from 10).
+  - **Gunners and markers** — Gunners can fire past markers.
+
+  ### Why we changed it
+
+  - **Bridges vs conveyors** — Bridges were objectively better than conveyors, so they needed a meaningful downside.
+  - **Builder rushes** — Removing builder self-destruct damage nerfs rushes, while the weak attack stops builders from becoming totally helpless.
+  - **Healing efficiency** — Builder bot healing needed to be weaker so normal attacking is actually viable.
+  - **Spam and runtime** — Higher unit scaling, more expensive builders, and a global unit cap all reduce spam and improve runtime.
+  - **Raw axionite routing** — Destroying raw axionite at the core and turrets stops players from mining it mindlessly without refining it.
+  - **Sentinel damage pacing** — The Sentinel change stops two Sentinels from instantly one-shotting a builder bot now that builders are much more expensive.
+  - **Breach vision** — A breach could previously hit a target with splash that it could not see.
+  - **Marker shielding** — This removes the possibility of spamming markers to defend against a gunner.
+
+  ### Implementation details
+
+  - **Builder attack API** — The builder attack reuses `can_fire()` and `fire()` instead of getting a separate API, and it only damages the building on the acting builder bot's own tile.
+  - **Unit cap counts the core** — The 50-unit cap includes the core, so a team can have at most 49 additional living units.
+  - **Builder heal targeting** — Healing only works on the acting builder bot's own tile. It heals the builder bot first if damaged, otherwise it heals the building underneath, and fails if neither would gain HP.
+  - **Marker interaction** — Markers remain targetable, but they do not shield occupied tiles behind them.
+  - **`can_build_unit()`** — Added so bots can check whether their team still has room under the unit cap.
+  - **Builder attack replay cue** — Replays now include a dedicated builder-attack event, shown in the visualiser as a small circle on the attacking builder bot.
+</Update>
+
 <Update label="2026-03-20" description="Mobile visualiser & sprint 1 maps" tags={["Feature", "Update", "Fix"]}>
   ## Mobile visualiser and sprint 1 maps
 
