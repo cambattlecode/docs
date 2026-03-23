@@ -38,7 +38,7 @@ description: What's new in Cambridge Battlecode.
   - **Builder attack API** — The builder attack reuses `can_fire()` and `fire()` instead of getting a separate API, and it only damages the building on the acting builder bot's own tile.
   - **Unit cap counts the core** — The 50-unit cap includes the core, so a team can have at most 49 additional living units.
   - **Marker interaction** — Markers remain targetable, but they do not shield occupied tiles behind them.
-  - **Unit cap queries** — Added `get_unit_count()` and `get_max_unit_count()` so bots can inspect their current room under the cap, while unit-producing `can_build_*()` methods now account for the cap directly.
+  - **Unit cap queries** — Added `get_unit_count()`, with the cap exposed as `GameConstants.MAX_TEAM_UNITS`, while unit-producing `can_build_*()` methods now account for the cap directly.
   - **Builder attack replay cue** — Replays now include a dedicated builder-attack event, shown in the visualiser as a small circle on the attacking builder bot.
 </Update>
 
