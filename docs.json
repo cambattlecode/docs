@@ -36,6 +36,9 @@
   "styling": {
     "codeblocks": "dark"
   },
+  "search": {
+    "prompt": "Search docs..."
+  },
   "favicon": "/favicon.ico",
   "navigation": {
     "tabs": [
@@ -61,17 +64,11 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "spec/overview",
-              "spec/resources"
-            ]
+            "pages": ["spec/overview", "spec/resources"]
           },
           {
             "group": "Units",
-            "pages": [
-              "spec/core",
-              "spec/builder-bot"
-            ]
+            "pages": ["spec/core", "spec/builder-bot"]
           },
           {
             "group": "Buildings",
@@ -83,15 +80,11 @@
           },
           {
             "group": "Combat",
-            "pages": [
-              "spec/turrets"
-            ]
+            "pages": ["spec/turrets"]
           },
           {
             "group": "Reference",
-            "pages": [
-              "spec/reference"
-            ]
+            "pages": ["spec/reference"]
           }
         ]
       },
@@ -100,11 +93,7 @@
         "groups": [
           {
             "group": "API",
-            "pages": [
-              "api/controller",
-              "api/types",
-              "api/constants"
-            ]
+            "pages": ["api/controller", "api/types", "api/constants"]
           }
         ]
       },
