@@ -1,6 +1,6 @@
 ---
 title: How Matches Work
-description: How ladder matches, ratings, and the 5-game format work.
+description: How ladder matches, Elo ratings, and the 5-game format work.
 ---
 
 ## Match format
@@ -34,6 +34,8 @@ With N teams, each cycle creates floor(N/2) matches — one match per team.
 ### Rating updates
 
 Ratings are updated using **Elo** immediately after each match completes. Match outcomes use fractional scoring based on the game score (e.g., a 5-0 win counts more than a 3-2 win).
+
+Each team has a single Elo rating that moves up or down after each match.
 
 ## Unrated matches
 
