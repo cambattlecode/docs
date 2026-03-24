@@ -5,6 +5,8 @@ description: Transport resources across the map — conveyors, splitters, bridge
 
 All conveyors can hold **one stack** of any resource, and both accept input and produce output. Basic conveyors, splitters, and armoured conveyors point in one of the **cardinal directions**.
 
+You can inspect the stack currently stored in one of these buildings with `c.get_stored_resource(...)` and `c.get_stored_resource_id(...)`.
+
 ## Conveyor
 
 <img src="/images/entities/conveyor.png" alt="Conveyor" style={{ width: 64, float: "right", marginLeft: 16 }} />
@@ -20,6 +22,10 @@ Accepts resources from any of its three non-output directions. Sends its content
 ```python
 # Build a conveyor pointing south
 c.build_conveyor(pos, Direction.SOUTH)
+
+# Inspect the stack currently on a conveyor
+resource_type = c.get_stored_resource(conveyor_id)
+resource_id = c.get_stored_resource_id(conveyor_id)
 ```
 
 ## Splitter
