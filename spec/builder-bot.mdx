@@ -3,19 +3,23 @@ title: Builder Bot
 description: The only mobile unit — responsible for constructing all buildings.
 ---
 
-<img src="/images/entities/builder-bot.png" alt="Builder bot" style={{ width: 64, float: "right", marginLeft: 16 }} />
+<img
+  src="/images/entities/builder-bot.png"
+  alt="Builder bot"
+  style={{ width: 64, float: "right", marginLeft: 16 }}
+/>
 
-Builder bots are the **only mobile unit**. They construct buildings, repair friendly entities on a tile, and can make a weak attack against the building under them.
+Builder bots are the **only mobile unit**. They construct buildings, heal friendly entities on a chosen tile, and can make a weak attack against the building under them.
 
 ## Properties
 
-| Property | Value |
-|----------|-------|
-| HP | 30 |
-| Base cost | 50 Ti |
-| Scaling contribution | 20% |
-| Vision radius² | 20 |
-| Action radius² | 2 |
+| Property             | Value |
+| -------------------- | ----- |
+| HP                   | 30    |
+| Base cost            | 50 Ti |
+| Scaling contribution | 20%   |
+| Vision radius²       | 20    |
+| Action radius²       | 2     |
 
 ![Builder bot range — blue is vision, red is action radius](/images/ranges/builder-bot.png)
 
@@ -29,7 +33,8 @@ Builder bots can move to an adjacent tile (including diagonals) if their move co
   - Roads (either team)
   - The allied core
 
-  These are called **walkable** tiles. The direction of the conveyor does not matter, and neither does the presence of resources on the tile.
+These are called **walkable** tiles. The direction of the conveyor does not matter, and neither does the presence of resources on the tile.
+
 </Warning>
 
 ```python
@@ -48,12 +53,13 @@ When action cooldown is 0, a builder bot can perform one of:
 Build any building or turret on a tile within action radius that doesn't already have a building.
 
 <Info>
-  Only walkable buildings (conveyors and roads) can be built on a tile that contains a builder bot.
+  Only walkable buildings (conveyors and roads) can be built on a tile that
+  contains a builder bot.
 </Info>
 
 ### Heal
 
-Spend **1 Ti** to heal **4 HP** to all friendly entities on the builder bot's own tile. If a friendly builder bot and a friendly building share that tile, both are healed. The action fails if nothing on the tile would gain HP.
+Spend **1 Ti** to heal **4 HP** to all friendly entities on a tile within action radius. If a friendly builder bot and a friendly building share the chosen tile, both are healed. The action fails if nothing on that tile would gain HP.
 
 ```python
 if c.can_heal(target_pos):
