@@ -93,6 +93,12 @@ button[aria-label="Toggle assistant panel"],
 button[aria-label="Ask AI"],
 button[aria-label="Ask AI assistant"],
 button[aria-label="Add to assistant"],
+[role="button"][aria-label*="assistant" i],
+[role="button"][aria-label*="ask ai" i],
+[role="button"][title*="assistant" i],
+[data-testid*="assistant" i],
+[data-testid*="ask-ai" i],
+[id*="assistant" i],
 [data-chat-payload-element-id] {
   display: none !important;
 }

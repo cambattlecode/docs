@@ -39,6 +39,9 @@
   "search": {
     "prompt": "Search docs..."
   },
+  "contextual": {
+    "options": ["copy", "view"]
+  },
   "favicon": "/favicon.ico",
   "navigation": {
     "tabs": [
