@@ -3,6 +3,39 @@ title: Changelog
 description: What's new in Cambridge Battlecode.
 ---
 
+<Update label="2026-03-30" description="Core conversion and balance update" tags={["Feature", "Balance", "Fix"]}>
+  ## Core conversion and balance update
+
+  This patch reworks early-game economy, makes several structures cheaper, adds
+  new controller actions for cores and gunners, and fixes a couple of edge-case
+  combat and building interactions.
+
+  ### New features
+
+  - **`convert(amount)`** — Cores can now convert refined axionite into titanium at a rate of 1 Ax to 4 Ti.
+  - **Converted-resource stats** — Axionite converted by the core is removed from the Ax collected stat and added to the Ti collected stat.
+  - **`rotate(direction)`** — Gunners can now rotate 45 degrees by spending 10 Ti from the global store and taking a 1-turn cooldown.
+  - **`get_attackable_tiles()`** — Turrets can now query their full attack pattern directly from the controller API.
+
+  ### Balance changes
+
+  - **Sentinels** — Reload increased to 3 rounds (up from 2).
+  - **Gunners** — Refined axionite ammo now deals 30 damage (up from 20).
+  - **Harvesters** — Base cost reduced to 20 Ti (down from 80 Ti) and scaling reduced to +5% (down from +10%).
+  - **Bridges** — Scaling increased to +10% (up from +5%).
+  - **Roads** — HP reduced to 5 (down from 10).
+  - **Builder bots** — Base cost reduced to 30 Ti (down from 50 Ti).
+  - **Starting economy** — Starting titanium reduced to 500 (down from 1000), and teams now gain 10 passive Ti every 4 rounds.
+  - **Breaches** — Titanium cost reduced to 15 Ti (down from 30 Ti).
+  - **Foundries** — Titanium cost reduced to 40 Ti (down from 120 Ti).
+  - **Armoured conveyors** — Titanium cost reduced to 5 Ti (down from 10 Ti).
+
+  ### Bug fixes
+
+  - Turret attacks now hit only the builder bot when a builder bot is standing on top of a building.
+  - Fixed a bug where a non-walkable building could be placed on a tile occupied by another builder bot.
+</Update>
+
 <Update label="2026-03-23" description="First balance patch" tags={["Update", "Balance", "Clarification"]}>
   ## First balance patch (23 March 2026, 12pm GMT)
 

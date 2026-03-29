@@ -7,7 +7,8 @@ description: Titanium, axionite, and the cost scaling formula.
 
 <img src="/images/resources/titanium.png" alt="Titanium" style={{ width: 48, float: "right", marginLeft: 16 }} />
 
-The primary resource used to construct most buildings. Each team starts with **1000 titanium**.
+The primary resource used to construct most buildings. Each team starts with
+**500 titanium** and gains **10 passive titanium every 4 rounds**.
 
 Titanium is harvested from titanium ore deposits and delivered to the core via conveyors.
 
@@ -29,6 +30,18 @@ Axionite comes in two forms:
 <Info>
   Whenever "axionite" is mentioned in the spec without qualification, it refers to **refined axionite**.
 </Info>
+
+## Conversion
+
+The core can convert refined axionite from the global resource pool into
+titanium with `c.convert(amount)`.
+
+$$
+1 \text{ Ax} \rightarrow 4 \text{ Ti}
+$$
+
+Converted axionite is removed from the Ax collected stat and added to the Ti
+collected stat.
 
 ## Resource distribution
 
@@ -60,8 +73,9 @@ import { DenseTable } from "/snippets/dense-table.jsx";
 <tbody>
 <tr><td>Road</td><td>+0.5%</td></tr>
 <tr><td>Conveyor, splitter, armoured conveyor, barrier</td><td>+1%</td></tr>
-<tr><td>Bridge</td><td>+5%</td></tr>
-<tr><td>Harvester, gunner, breach, launcher</td><td>+10%</td></tr>
+<tr><td>Bridge</td><td>+10%</td></tr>
+<tr><td>Harvester</td><td>+5%</td></tr>
+<tr><td>Gunner, breach, launcher</td><td>+10%</td></tr>
 <tr><td>Builder bot, sentinel</td><td>+20%</td></tr>
 <tr><td>Axionite foundry</td><td>+100%</td></tr>
 </tbody>
