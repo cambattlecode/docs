@@ -20,6 +20,9 @@ max_turns = GameConstants.MAX_TURNS  # 2000
 | `STACK_SIZE` | 10 | Resources are moved in stacks of 10 |
 | `STARTING_TITANIUM` | 500 | Each team's initial titanium |
 | `STARTING_AXIONITE` | 0 | Each team's initial axionite |
+| `PASSIVE_TITANIUM_AMOUNT` | 10 | Titanium granted passively each interval |
+| `PASSIVE_TITANIUM_INTERVAL` | 4 | Rounds between passive titanium grants |
+| `AXIONITE_CONVERSION_TITANIUM_RATE` | 4 | Titanium gained per refined axionite converted |
 
 ## Radii (squared)
 
@@ -84,9 +87,12 @@ max_turns = GameConstants.MAX_TURNS  # 2000
 | `BUILDER_BOT_HEAL_COST` | (1, 0) | Cost per builder bot heal |
 | `BUILDER_BOT_SELF_DESTRUCT_DAMAGE` | 0 | Damage on self-destruct |
 | `HEAL_AMOUNT` | 4 | HP restored per heal action |
-| `GUNNER_DAMAGE` | 10 | Gunner base damage per shot (30 with refined axionite) |
+| `GUNNER_DAMAGE` | 10 | Gunner base damage per shot |
+| `GUNNER_AXIONITE_DAMAGE` | 30 | Gunner damage when loaded with refined axionite |
 | `GUNNER_FIRE_COOLDOWN` | 1 | Turns between gunner shots |
 | `GUNNER_AMMO_COST` | 2 | Resources consumed per shot |
+| `GUNNER_ROTATE_COST` | (10, 0) | Cost to rotate a gunner 45° |
+| `GUNNER_ROTATE_COOLDOWN` | 1 | Action cooldown applied after rotating |
 | `SENTINEL_DAMAGE` | 10 | Sentinel damage per shot |
 | `SENTINEL_FIRE_COOLDOWN` | 3 | Turns between sentinel shots |
 | `SENTINEL_AMMO_COST` | 5 | Resources consumed per shot |
