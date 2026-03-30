@@ -7,15 +7,18 @@ description: What's new in Cambridge Battlecode.
   ## Core conversion and balance update
 
   This patch reworks early-game economy, makes several structures cheaper, adds
-  new controller actions for cores and gunners, and fixes a couple of edge-case
-  combat and building interactions.
+  new controller actions and turret-geometry queries, and fixes a couple of
+  edge-case combat and building interactions.
 
   ### New features
 
   - **`convert(amount)`** — Cores can now convert refined axionite into titanium at a rate of 1 Ax to 4 Ti.
   - **Converted-resource stats** — Axionite converted by the core is removed from the Ax collected stat and added to the Ti collected stat.
   - **`rotate(direction)`** — Gunners can now rotate 45 degrees by spending 10 Ti from the global store and taking a 1-turn cooldown.
-  - **`get_attackable_tiles()`** — Turrets can now query their full attack pattern directly from the controller API.
+  - **`can_rotate(direction)`** — Gunners can now preflight a 45-degree left or right rotation without mutating state.
+  - **`get_attackable_tiles()`** — Turrets can now query their raw geometric attack pattern directly from the controller API.
+  - **`get_attackable_tiles_from(position, direction, turret_type)`** — Any controller can now query the same raw attack pattern for a hypothetical turret at any in-bounds tile.
+  - **`can_fire_from(position, direction, turret_type, target)`** — Any controller can now check whether a hypothetical turret would have a legal shot on the current map.
 
   ### Balance changes
 
@@ -33,6 +36,8 @@ description: What's new in Cambridge Battlecode.
   ### Bug fixes
 
   - Turret attacks now hit only the builder bot when a builder bot is standing on top of a building.
+  - Gunners now use first-obstruction line of sight: markers are targetable but do not block, walls block without being targetable, and builder bots plus non-marker buildings are both targetable and blocking.
+  - `get_gunner_target()` now returns the nearest targetable occupied tile on the forward line instead of the first non-empty tile.
   - Fixed a bug where a non-walkable building could be placed on a tile occupied by another builder bot.
 </Update>
 
@@ -70,7 +75,7 @@ description: What's new in Cambridge Battlecode.
 
   - **Builder attack API** — The builder attack reuses `can_fire()` and `fire()` instead of getting a separate API, and it only damages the building on the acting builder bot's own tile.
   - **Unit cap counts the core** — The 50-unit cap includes the core, so a team can have at most 49 additional living units.
-  - **Marker interaction** — Markers remain targetable, but they do not shield occupied tiles behind them.
+  - **Marker interaction** — Markers remain targetable, but unlike walls and other blocking occupants they do not block line of sight or shield occupied tiles behind them.
   - **Unit cap queries** — Added `get_unit_count()`, with the cap exposed as `GameConstants.MAX_TEAM_UNITS`, while unit-producing `can_build_*()` methods now account for the cap directly.
   - **Builder attack replay cue** — Replays now include a dedicated builder-attack event, shown in the visualiser as a small circle on the attacking builder bot.
 </Update>
