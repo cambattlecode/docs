@@ -355,8 +355,8 @@ c.build_launcher(pos)                     c.can_build_launcher(pos)
   Return True if this turret can fire at target this round, or if this builder
   bot can use its own-tile attack on target. Gunners use the same
   first-obstruction line of sight as `fire()`: empty tiles and markers do not
-  block, markers are targetable, walls block but are not targetable, and
-  builder bots plus non-marker buildings are both targetable and blocking.
+  block, markers are targetable, walls block but are not targetable, and builder
+  bots plus non-marker buildings are both targetable and blocking.
 </ResponseField>
 
 <ResponseField
@@ -376,16 +376,15 @@ c.build_launcher(pos)                     c.can_build_launcher(pos)
 
 <ResponseField name="can_rotate(direction: Direction)" type="bool">
   Return whether `rotate(direction)` would be legal this round. This returns
-  False if the current unit is not a gunner, if direction is not exactly one
-  45-degree left or right turn from the current facing, if the gunner cannot
-  act this turn, or if the team cannot afford the global 10 Ti rotate cost.
-  Unlike `rotate()`, this does not raise on non-gunners.
+  False if the current unit is not a gunner, if the gunner cannot act this turn,
+  or if the team cannot afford the global 10 Ti rotate cost. Unlike `rotate()`,
+  this does not raise on non-gunners.
 </ResponseField>
 
 <ResponseField name="rotate(direction: Direction)" type="None">
-  Rotate this gunner 45 degrees to an adjacent facing direction. Costs 10
-  titanium from the global resource pool and applies a 1-turn cooldown. Raises
-  `GameError` if not legal. Only valid on gunners.
+  Rotate this gunner to face `direction`. Costs 10 titanium from the global
+  resource pool and applies a 1-turn cooldown. Raises `GameError` if not legal.
+  Only valid on gunners.
 </ResponseField>
 
 <ResponseField name="launch(bot_pos: Position, target: Position)" type="None">
