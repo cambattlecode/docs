@@ -13,6 +13,28 @@ description: What's new in Cambridge Battlecode.
 
 </Update>
 
+<Update label="2026-04-07" description="Resign messages, granular win conditions, CLI restructure" tags={["Feature", "Update"]}>
+  ## Resign messages, granular win conditions, and CLI restructure
+
+  ### New features
+
+  - **Resign with message** — [`resign()`](/api/controller#healing--destruction) now accepts an optional `message` parameter (max 500 characters). The message is saved to the replay and displayed in match results on both the platform and CLI.
+  - **Granular win conditions** — Each tiebreaker now reports its specific condition (axionite collected, titanium collected, harvesters, axionite stored, titanium stored, coinflip) instead of the generic "Resources". The match detail page and CLI show exactly which condition decided each game.
+  - **Map selection for unrated matches** — You can now specify up to 5 maps when requesting an unrated match: `cambc match unrated <id> --map arena --map galaxy`. If omitted, 5 random maps are used.
+  - **Challenge page** — Rematch buttons now open a dedicated challenge page where you can configure maps before starting the match.
+  - **Guest access** — The ladder, matches, match detail, team profiles, tournaments, and visualiser are now viewable without logging in.
+  - **Zip download** — Submission and test bot code viewers now have a download button to save the original zip.
+  - **Shared test runs** — All team members can now see each other's test runs, not just their own.
+
+  ### Updates
+
+  - **CLI restructure** — Match-related commands are now grouped under `cambc match`: `cambc match info`, `cambc match list`, `cambc match unrated`, `cambc match test`, `cambc match replay`, `cambc match watch`, `cambc match tests`. Team commands are under `cambc team`. The old top-level commands (`cambc unrated`, `cambc test-run`, `cambc matches`, `cambc test-matches`, `cambc teams`) still work but show a deprecation warning.
+  - **`cambc run` options** — New `--tle N` option sets a turn time limit in milliseconds (0 to disable). New `--map-random` picks a random map from your maps directory.
+  - **Write rate limiting** — All write API endpoints now enforce a per-user rate limit (30 requests per minute) to prevent abuse.
+  - **Active submission selection** — You can now manually select which submission is active from the Submissions page, rather than always using the latest.
+  - **CLI v1.6.0** — Includes all changes above. Update with `pip install --upgrade cambc`.
+</Update>
+
 <Update label="2026-03-31" description="Gunner rotation update" tags={["Balance", "Fix"]}>
   ## Gunner rotation update
 
