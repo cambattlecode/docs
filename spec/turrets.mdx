@@ -3,16 +3,15 @@ title: Turrets
 description: Defensive and offensive combat units — gunner, sentinel, breach, and launcher.
 ---
 
-Every turret **except the launcher** faces in one of **8 directions**. Ammo must be fed to turrets via conveyors, an adjacent harvester, an adjacent foundry, or a bridge targeting the turret's tile, from any direction except the direction the turret is facing. Diagonal turrets can be fed from all four sides.
+Every turret **except the launcher** faces in one of **8 directions**.
+
+## Ammo
+
+Gunners, sentinels, and breaches require **ammo** to fire. Ammo is simply a stack of resources sitting inside the turret — each shot consumes a fixed number of resources from that stack (see per-turret tables below). Launchers do not use ammo.
+
+Ammo must be fed to turrets via conveyors, an adjacent harvester, an adjacent foundry, or a bridge targeting the turret's tile, from any direction except the direction the turret is facing. Diagonal turrets can be fed from all four sides.
 
 Ammo-based turrets can hold up to one stack of one resource type and only accept incoming resources when completely empty.
-
-You can inspect raw turret geometry with `c.get_attackable_tiles()` on a real
-turret or `c.get_attackable_tiles_from(position, direction, turret_type)` from
-any controller. These queries ignore ammo, cooldown, occupancy, blockers, and
-other legality checks. Use `c.can_fire()` to check a real turret's current shot
-legality, or `c.can_fire_from(...)` to test a hypothetical shot against the
-current map's range and obstruction rules.
 
 <Info>
   If a builder bot is standing on a building, turret attacks on that tile hit
@@ -185,3 +184,17 @@ c.build_launcher(pos)
 if c.can_launch(bot_pos, target_pos):
     c.launch(bot_pos, target_pos)
 ```
+
+## Querying turret geometry
+
+`c.get_attackable_tiles()` returns the raw geometric attack pattern for the
+turret you are controlling, and
+`c.get_attackable_tiles_from(position, direction, turret_type)` returns the same
+pattern for a hypothetical turret at any position — callable from any controller.
+Both ignore ammo, cooldown, occupancy, blockers, and other legality checks.
+
+To check whether a shot is actually legal right now, use `c.can_fire(target)` on
+a real turret, or `c.can_fire_from(position, direction, turret_type, target)` to
+test a hypothetical shot against the current map's range and obstruction rules.
+
+See the [Controller reference](/api/controller) for full method signatures.
